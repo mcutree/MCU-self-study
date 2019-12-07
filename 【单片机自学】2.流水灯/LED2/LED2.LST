@@ -1,0 +1,74 @@
+C51 COMPILER V9.01   LED2                                                                  09/24/2011 11:19:20 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE LED2
+OBJECT MODULE PLACED IN LED2.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE LED2.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*-----------------------------------------------
+   2            名称：点亮一个LED
+   3            公司：济南博芯电子
+   4            论坛：http://bxmcu.vicp.net:8080
+   5            编写：
+   6            日期：2011.9
+   7            版本：Version 1.0
+   8            内容：利用单片机的I/O口来控制一个发光二极管,
+   9          ------------------------------------------------*/
+  10          #include<reg52.h> //包含头文件，一般MCS51系列不需要改动，
+  11                            //头文件包含特殊功能寄存器的定义
+  12          
+  13          sbit LED=P0^0;   //用sbit来定义一个I/O口，将枯燥的I/O口
+  14                           //用自己熟悉的名字代替，做到件词知意的效果
+  15                                           //这里的LED可以改成任意自己易于记忆的名字
+  16          
+  17          
+  18          /*------------------------------------------------------
+  19          函数名称：void delay(unsigned int t)
+  20          功能描述：通过该函数实现延时
+  21          参数说明：t为延时时间
+  22          全局变量：无
+  23          返 回 值：无
+  24          设 计 人：博芯电子
+  25          版    本：Version 1.0
+  26          设计时间：2011-9-22
+  27          说    明：无
+  28          ---------------------------------------------------*/
+  29          void delay(unsigned int t)
+  30          {
+  31   1       while(t--);
+  32   1      }
+  33          /*------------------------------------------------
+  34                              主函数
+  35          ------------------------------------------------*/
+  36          void main (void)
+  37          {
+  38   1                 
+  39   1              while (1)         //主循环
+  40   1                {
+  41   2                LED=0;            //将P0.0口赋值 0，该口电平为低，使LED亮
+  42   2                delay(50000);      //调用延时程序；更改延时数字可以更改延时长度；
+  43   2                                                       //用于改变闪烁频率
+  44   2                LED=1;            //将P0.0口赋值 1，该口电平为高，使LED灭
+  45   2                delay(50000);
+  46   2                                                       
+  47   2                }
+  48   1      }
+  49          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     31    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+C51 COMPILER V9.01   LED2                                                                  09/24/2011 11:19:20 PAGE 2   
+
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,59 @@
+C51 COMPILER V9.01   LED1                                                                  09/25/2011 21:45:07 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE LED1
+OBJECT MODULE PLACED IN LED1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE LED1.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*-----------------------------------------------
+   2            名称：使LED间隔亮灭
+   3            公司：济南博芯电子
+   4            论坛：http://bxmcu.vicp.net:8080
+   5            编写：
+   6            日期：2011.9
+   7            版本：Version 1.0
+   8            内容：利用单片机的I/O口来控制8位LED间隔亮灭,
+   9                          熟练掌握Keil编程及下载的方法
+  10          ------------------------------------------------*/
+  11          #include<reg52.h> //包含头文件，一般MCS51系列不需要改动，
+  12                            //头文件包含特殊功能寄存器的定义
+  13          /*--------------------------------------------------
+  14                              主函数
+  15          -------------------------------------------------*/
+  16          void main(void)
+  17          {
+  18   1      
+  19   1              P0=0XAA;                  //0XAA为16进制表示形式，
+  20   1                                                //将其转化为二进制的形式为：
+  21   1                                                // 1 0 1 0 1 0 1 0 
+  22   1                                                //通过硬件连接可知：
+  23   1                                //当I/O口为“1”时LED是灭的
+  24   1                                                //当I/O口为“0”时LED是亮的
+  25   1                                                //灭 亮 灭 亮 灭 亮 灭 亮                                             
+  26   1      
+  27   1              while (1)         //死循环
+  28   1                {
+  29   2                                                //程序一直在该函数中循环
+  30   2                }
+  31   1      }
+  32          
+  33          
+  34          
+  35          
+  36          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      5    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

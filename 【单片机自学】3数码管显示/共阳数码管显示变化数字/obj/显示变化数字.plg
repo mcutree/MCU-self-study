@@ -1,0 +1,15 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+M:\17-1个共阳数码管显示变化数字\显示变化数字.uvproj
+Project File Date:  <unknown>
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling 显示变化数字.c...
+linking...
+Program Size: data=10.0 xdata=0 code=64
+creating hex file from ".\obj\显示变化数字"...
+".\obj\显示变化数字" - 0 Error(s), 0 Warning(s).

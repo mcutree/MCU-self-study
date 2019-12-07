@@ -1,0 +1,16 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+c:\Documents and Settings\Administrator\My Documents\Œ“µƒΩÃ≥Ã\1602“∫æßæ≤Ã¨œ‘ æ\1602“∫æßæ≤Ã¨œ‘ æ.uvproj
+Project File Date:  09/24/2011
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling 1602“∫æßæ≤Ã¨œ‘ æ.c...
+1602“∫æßæ≤Ã¨œ‘ æ.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
+linking...
+Program Size: data=9.0 xdata=0 code=286
+creating hex file from ".\obj\1602“∫æßæ≤Ã¨œ‘ æ"...
+".\obj\1602“∫æßæ≤Ã¨œ‘ æ" - 0 Error(s), 1 Warning(s).

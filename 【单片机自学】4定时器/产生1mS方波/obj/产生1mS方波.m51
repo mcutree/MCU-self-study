@@ -1,0 +1,111 @@
+BL51 BANKED LINKER/LOCATER V6.00                                                        09/27/2011  10:31:23  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.00, INVOKED BY:
+F:\单片机技术\C51\BIN\BL51.EXE .\obj\产生1mS方波.obj TO .\obj\产生1mS方波 PRINT (.\obj\产生1mS方波.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\obj\产生1mS方波.obj (瞋蒧1MS方波)
+  F:\单片机技术\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\obj\产生1mS方波 (瞋蒧1MS方波)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     07F2H                  *** GAP ***
+            CODE    0800H     0010H     UNIT         ?PR?INIT_TIMER0?瞋蒧1MS方波
+            CODE    0810H     000CH     UNIT         ?C_C51STARTUP
+            CODE    081CH     0009H     UNIT         ?PR?TIMER0_ISR?瞋蒧1MS方波
+            CODE    0825H     0005H     UNIT         ?PR?MAIN?瞋蒧1MS方波
+
+
+
+OVERLAY MAP OF MODULE:   .\obj\产生1mS方波 (瞋蒧1MS方波)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?瞋蒧1MS方波
+
+?PR?MAIN?瞋蒧1MS方波
+  +--> ?PR?INIT_TIMER0?瞋蒧1MS方波
+
+
+
+SYMBOL TABLE OF MODULE:  .\obj\产生1mS方波 (瞋蒧1MS方波)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        瞋蒧1MS方波
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+BL51 BANKED LINKER/LOCATER V6.00                                                      09/27/2011  10:31:23  PAGE 2
+
+
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0825H         PUBLIC        main
+  C:0800H         PUBLIC        Init_Timer0
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  B:00A8H.1       PUBLIC        ET0
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  C:081CH         PUBLIC        Timer0_isr
+  D:00C8H         PUBLIC        T2CON
+  B:0090H.2       PUBLIC        OUT
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          INIT_TIMER0
+  C:0800H         LINE#         17
+  C:0800H         LINE#         18
+  C:0800H         LINE#         19
+  C:0803H         LINE#         20
+  C:0806H         LINE#         21
+  C:0809H         LINE#         22
+  C:080BH         LINE#         23
+  C:080DH         LINE#         24
+  C:080FH         LINE#         25
+  -------         ENDPROC       INIT_TIMER0
+  -------         PROC          MAIN
+  C:0825H         LINE#         29
+  C:0825H         LINE#         30
+  C:0825H         LINE#         31
+  C:0828H         LINE#         32
+  -------         ENDPROC       MAIN
+  -------         PROC          TIMER0_ISR
+  C:081CH         LINE#         37
+  C:081CH         LINE#         39
+  C:081FH         LINE#         40
+  C:0822H         LINE#         42
+  C:0824H         LINE#         44
+  -------         ENDPROC       TIMER0_ISR
+  -------         ENDMOD        瞋蒧1MS方波
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0021H BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=48
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

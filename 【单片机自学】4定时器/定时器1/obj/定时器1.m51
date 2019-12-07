@@ -1,0 +1,111 @@
+BL51 BANKED LINKER/LOCATER V6.00                                                        09/27/2011  10:30:56  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.00, INVOKED BY:
+F:\单片机技术\C51\BIN\BL51.EXE .\obj\定时器1.obj TO .\obj\定时器1 PRINT (.\obj\定时器1.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\obj\定时器1.obj (定时芲1)
+  F:\单片机技术\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\obj\定时器1 (定时芲1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0018H                  *** GAP ***
+            CODE    001BH     0003H     ABSOLUTE     
+                    001EH     07E2H                  *** GAP ***
+            CODE    0800H     000FH     UNIT         ?PR?INIT_TIMER1?定时芲1
+            CODE    080FH     000CH     UNIT         ?C_C51STARTUP
+            CODE    081BH     0009H     UNIT         ?PR?TIMER1_ISR?定时芲1
+            CODE    0824H     0005H     UNIT         ?PR?MAIN?定时芲1
+
+
+
+OVERLAY MAP OF MODULE:   .\obj\定时器1 (定时芲1)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?定时芲1
+
+?PR?MAIN?定时芲1
+  +--> ?PR?INIT_TIMER1?定时芲1
+
+
+
+SYMBOL TABLE OF MODULE:  .\obj\定时器1 (定时芲1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        定时芲1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+BL51 BANKED LINKER/LOCATER V6.00                                                      09/27/2011  10:30:56  PAGE 2
+
+
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0824H         PUBLIC        main
+  C:0800H         PUBLIC        Init_Timer1
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  B:00A8H.3       PUBLIC        ET1
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:0090H.3       PUBLIC        LED
+  B:0088H.6       PUBLIC        TR1
+  C:081BH         PUBLIC        Timer1_isr
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          INIT_TIMER1
+  C:0800H         LINE#         17
+  C:0800H         LINE#         18
+  C:0800H         LINE#         19
+  C:0803H         LINE#         20
+  C:0806H         LINE#         21
+  C:0808H         LINE#         22
+  C:080AH         LINE#         23
+  C:080CH         LINE#         24
+  C:080EH         LINE#         25
+  -------         ENDPROC       INIT_TIMER1
+  -------         PROC          MAIN
+  C:0824H         LINE#         29
+  C:0824H         LINE#         30
+  C:0824H         LINE#         31
+  C:0827H         LINE#         32
+  -------         ENDPROC       MAIN
+  -------         PROC          TIMER1_ISR
+  C:081BH         LINE#         37
+  C:081BH         LINE#         39
+  C:081EH         LINE#         40
+  C:0821H         LINE#         42
+  C:0823H         LINE#         44
+  -------         ENDPROC       TIMER1_ISR
+  -------         ENDMOD        定时芲1
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0020H BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=47
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

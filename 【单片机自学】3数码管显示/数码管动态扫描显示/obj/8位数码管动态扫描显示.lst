@@ -1,0 +1,24 @@
+C51 COMPILER V9.01   8位数_牍_禵态扫描显示                                                 09/24/2011 16:11:28 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE 8位数_牍_禵态扫描显示
+OBJECT MODULE PLACED IN .\obj\8位数码管动态扫描显示.obj
+COMPILER INVOKED BY: D:\keil\C51\BIN\C51.EXE 8位数码管动态扫描显示.c BROWSE DEBUG OBJECTEXTEND PRINT(.\obj\8位数码管动态
+                    -扫描显示.lst) OBJECT(.\obj\8位数码管动态扫描显示.obj)
+
+line level    source
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     56    ----
+   CONSTANT SIZE    =     18    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

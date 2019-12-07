@@ -1,0 +1,203 @@
+C51 COMPILER V9.00   Í_²¿_Ð¶Ï                                                              09/30/2011 11:24:02 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE Í_²¿_Ð¶Ï
+OBJECT MODULE PLACED IN Íâ²¿ÖÐ¶Ï.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Íâ²¿ÖÐ¶Ï.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*-----------------------------------------------
+   2            Ãû³Æ£º¾ØÕó¼üÅÌÖÐ¶ÏÉ¨Ãè
+   3            ¹«Ë¾£º¼ÃÄÏ²©Ð¾µç×Ó
+   4            ÂÛÌ³£ºhttp://bxmcu.vicp.net:8080
+   5            ±àÐ´£ºicycreed        
+   6            ÈÕÆÚ£º2011.9
+   7            °æ±¾£ºVersion 1.0
+   8            ÄÚÈÝ£ºÊ¹ÓÃÐÐÁÐÉ¨Ãè·½·¨                
+   9                  ÖÐ¶Ï·½Ê½¿ÉÒÔÓÐÐ§Ìá¹©cpu¹¤×÷Ð§ÂÊ£¬ÔÚÓÐ°´¼ü¶¯×÷Ê±²ÅÉ¨Ãè£¬Æ½Ê±²»½øÐÐÉ¨Ãè¹¤×÷
+  10          ------------------------------------------------*/
+  11          
+  12          
+  13          #include<reg52.h> //°üº¬Í·ÎÄ¼þ£¬Ò»°ãÇé¿ö²»ÐèÒª¸Ä¶¯£¬Í·ÎÄ¼þ°üº¬ÌØÊâ¹¦ÄÜ¼Ä´æÆ÷µÄ¶¨Òå
+  14          #define KeyPort  P0
+  15          sbit dula=P2^1;
+  16          sbit wela=P2^0;
+  17          
+  18          unsigned char code  DuanMa[]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,
+  19                                                           0x77,0x7c,0x39,0x5e,0x79,0x71};// ÏÔÊ¾¶ÎÂëÖµ0~F
+  20          unsigned char num; 
+  21          
+  22          void DelayUs2x(unsigned char t);//us¼¶ÑÓÊ±º¯ÊýÉùÃ÷ 
+  23          void DelayMs(unsigned char t); //ms¼¶ÑÓÊ±
+  24          unsigned char KeyScan(void);//¼üÅÌÉ¨Ãè
+  25          unsigned char KeyPro(void);
+  26          
+  27          void display(unsigned char aa);
+  28          /*------------------------------------------------
+  29                              Ö÷º¯Êý
+  30          ------------------------------------------------*/
+  31          void main (void)
+  32          { 
+  33   1              dula=1;
+  34   1              P1=0xff;
+  35   1              dula=0;
+  36   1              wela=1;
+  37   1              P1=0x00;
+  38   1              wela=0;                 
+  39   1      
+  40   1      
+  41   1              EA=1;          //È«¾ÖÖÐ¶Ï¿ª
+  42   1              EX0=1;         //Íâ²¿ÖÐ¶Ï0¿ª
+  43   1              IT0=1;         //±ßÑØ´¥·¢
+  44   1      
+  45   1      while (1)         //Ö÷Ñ­»·
+  46   1        {
+  47   2              display(num);
+  48   2              KeyPort=0xf0;// ¸³ÖµÓÃÓÚÖÐ¶Ï¼ì²â                
+  49   2       }
+  50   1      }
+  51          
+  52          void display(unsigned char aa)
+  53          {
+  54   1              dula=1;
+  55   1              P1=DuanMa[aa];
+C51 COMPILER V9.00   Í_²¿_Ð¶Ï                                                              09/30/2011 11:24:02 PAGE 2   
+
+  56   1              dula=0;         
+  57   1      }
+  58          /*------------------------------------------------
+  59           uSÑÓÊ±º¯Êý£¬º¬ÓÐÊäÈë²ÎÊý unsigned char t£¬ÎÞ·µ»ØÖµ
+  60           unsigned char ÊÇ¶¨ÒåÎÞ·ûºÅ×Ö·û±äÁ¿£¬ÆäÖµµÄ·¶Î§ÊÇ
+  61           0~255 ÕâÀïÊ¹ÓÃ¾§Õñ12M£¬¾«È·ÑÓÊ±ÇëÊ¹ÓÃ»ã±à,´óÖÂÑÓÊ±
+  62           ³¤¶ÈÈçÏÂ T=tx2+5 uS 
+  63          ------------------------------------------------*/
+  64          void DelayUs2x(unsigned char t)
+  65          {   
+  66   1              while(--t);
+  67   1      }
+  68          /*------------------------------------------------
+  69           mSÑÓÊ±º¯Êý£¬º¬ÓÐÊäÈë²ÎÊý unsigned char t£¬ÎÞ·µ»ØÖµ
+  70           unsigned char ÊÇ¶¨ÒåÎÞ·ûºÅ×Ö·û±äÁ¿£¬ÆäÖµµÄ·¶Î§ÊÇ
+  71           0~255 ÕâÀïÊ¹ÓÃ¾§Õñ12M£¬¾«È·ÑÓÊ±ÇëÊ¹ÓÃ»ã±à
+  72          ------------------------------------------------*/
+  73          void DelayMs(unsigned char t)
+  74          {
+  75   1           
+  76   1              while(t--)
+  77   1              {
+  78   2                      //´óÖÂÑÓÊ±1mS
+  79   2                      DelayUs2x(245);
+  80   2                      DelayUs2x(245);
+  81   2              }
+  82   1      }
+  83          
+  84          
+  85          /*------------------------------------------------
+  86          °´¼üÉ¨Ãèº¯Êý£¬·µ»ØÉ¨Ãè¼üÖµ
+  87          ------------------------------------------------*/
+  88          unsigned char KeyScan(void)  //¼üÅÌÉ¨Ãèº¯Êý£¬Ê¹ÓÃÐÐÁÐÖð¼¶É¨Ãè·¨
+  89          {
+  90   1       unsigned char Val;
+  91   1       KeyPort=0xf0;//¸ßËÄÎ»ÖÃ¸ß£¬µÍËÄÎ»À­µÍ
+  92   1       if(KeyPort!=0xf0)//±íÊ¾ÓÐ°´¼ü°´ÏÂ
+  93   1         {
+  94   2          DelayMs(10);  //È¥¶¶
+  95   2              if(KeyPort!=0xf0)
+  96   2                {           //±íÊ¾ÓÐ°´¼ü°´ÏÂ
+  97   3              KeyPort=0xfe; //¼ì²âµÚÒ»ÐÐ
+  98   3                      if(KeyPort!=0xfe)
+  99   3                              {
+ 100   4                                Val=KeyPort&0xf0;
+ 101   4                            Val+=0x0e;
+ 102   4                                while(KeyPort!=0xfe);
+ 103   4                                DelayMs(10); //È¥¶¶
+ 104   4                                while(KeyPort!=0xfe);
+ 105   4                        return Val;
+ 106   4                      }
+ 107   3              KeyPort=0xfd; //¼ì²âµÚ¶þÐÐ
+ 108   3                      if(KeyPort!=0xfd)
+ 109   3                              {
+ 110   4                                Val=KeyPort&0xf0;
+ 111   4                            Val+=0x0d;
+ 112   4                                while(KeyPort!=0xfd);
+ 113   4                                DelayMs(10); //È¥¶¶
+ 114   4                                while(KeyPort!=0xfd);
+ 115   4                        return Val;
+ 116   4                      }
+ 117   3              KeyPort=0xfb; //¼ì²âµÚÈýÐÐ
+C51 COMPILER V9.00   Í_²¿_Ð¶Ï                                                              09/30/2011 11:24:02 PAGE 3   
+
+ 118   3                      if(KeyPort!=0xfb)
+ 119   3                              {
+ 120   4                                Val=KeyPort&0xf0;
+ 121   4                            Val+=0x0b;
+ 122   4                                while(KeyPort!=0xfb);
+ 123   4                                DelayMs(10); //È¥¶¶
+ 124   4                                while(KeyPort!=0xfb);
+ 125   4                        return Val;
+ 126   4                      }
+ 127   3              KeyPort=0xf7; //¼ì²âµÚËÄÐÐ
+ 128   3                      if(KeyPort!=0xf7)
+ 129   3                              {
+ 130   4                                Val=KeyPort&0xf0;
+ 131   4                            Val+=0x07;
+ 132   4                                while(KeyPort!=0xf7);
+ 133   4                                DelayMs(10); //È¥¶¶
+ 134   4                                while(KeyPort!=0xf7);
+ 135   4                        return Val;
+ 136   4                      }
+ 137   3           }
+ 138   2         }
+ 139   1        return 0xff;
+ 140   1      }
+ 141          /*------------------------------------------------
+ 142          °´¼üÖµ´¦Àíº¯Êý£¬·µ»ØÉ¨¼üÖµ
+ 143          ------------------------------------------------*/
+ 144          unsigned char KeyPro(void)
+ 145          {
+ 146   1       switch(KeyScan())
+ 147   1       {
+ 148   2        case 0x7e:return 0;break;//0 °´ÏÂÏàÓ¦µÄ¼üÏÔÊ¾Ïà¶ÔÓ¦µÄÂëÖµ
+ 149   2        case 0x7d:return 1;break;//1
+ 150   2        case 0x7b:return 2;break;//2
+ 151   2        case 0x77:return 3;break;//3
+ 152   2        case 0xbe:return 4;break;//4
+ 153   2        case 0xbd:return 5;break;//5
+ 154   2        case 0xbb:return 6;break;//6
+ 155   2        case 0xb7:return 7;break;//7
+ 156   2        case 0xde:return 8;break;//8
+ 157   2        case 0xdd:return 9;break;//9
+ 158   2        case 0xdb:return 10;break;//a
+ 159   2        case 0xd7:return 11;break;//b
+ 160   2        case 0xee:return 12;break;//c
+ 161   2        case 0xed:return 13;break;//d
+ 162   2        case 0xeb:return 14;break;//e
+ 163   2        case 0xe7:return 15;break;//f
+ 164   2        default:return 0xff;break;
+ 165   2       }
+ 166   1      }
+ 167          /*------------------------------------------------
+ 168                           Íâ²¿ÖÐ¶Ï0³ÌÐò
+ 169          ------------------------------------------------*/
+ 170          void ISR_INT0(void) interrupt 0 
+ 171          { 
+ 172   1              num=KeyPro();  
+ 173   1              IE0=0;
+ 174   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    384    ----
+   CONSTANT SIZE    =     16    ----
+C51 COMPILER V9.00   Í_²¿_Ð¶Ï                                                              09/30/2011 11:24:02 PAGE 4   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
