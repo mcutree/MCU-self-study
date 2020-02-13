@@ -1,0 +1,115 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/30/2011  12:39:45  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL\C51\BIN\BL51.EXE 点阵.obj TO 点阵 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  点阵.obj (点誣)
+  D:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  点阵 (点誣)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0010H     UNIT         ?DT?点誣
+            IDATA   0018H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0021H     UNIT         ?PR?MAIN?点誣
+            CODE    08ADH     0015H     UNIT         ?C_INITSEG
+            CODE    08C2H     000DH     UNIT         ?PR?DELAY?点誣
+
+
+
+OVERLAY MAP OF MODULE:   点阵 (点誣)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?点誣
+  +--> ?C_INITSEG
+
+?PR?MAIN?点誣
+  +--> ?PR?DELAY?点誣
+
+
+
+SYMBOL TABLE OF MODULE:  点阵 (点誣)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        点誣
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/30/2011  12:39:45  PAGE 2
+
+
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  C:08C2H         PUBLIC        delay
+  D:00B8H         PUBLIC        IP
+  C:088CH         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  B:00A0H.0       PUBLIC        DZH
+  D:00C8H         PUBLIC        T2CON
+  B:00A0H.1       PUBLIC        DZL
+  D:0008H         PUBLIC        dx_table1
+  D:0010H         PUBLIC        dx_table2
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          DELAY
+  -------         DO            
+  D:0007H         SYMBOL        i
+  D:0006H         SYMBOL        j
+  -------         ENDDO         
+  C:08C2H         LINE#         20
+  C:08C2H         LINE#         21
+  C:08C2H         LINE#         23
+  C:08C4H         LINE#         24
+  C:08CEH         LINE#         25
+  -------         ENDPROC       DELAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0005H         SYMBOL        i
+  -------         ENDDO         
+  C:088CH         LINE#         30
+  C:088CH         LINE#         31
+  C:088CH         LINE#         33
+  C:088CH         LINE#         34
+  C:088CH         LINE#         35
+  C:088EH         LINE#         36
+  C:088EH         LINE#         37
+  C:0895H         LINE#         38
+  C:0897H         LINE#         39
+  C:0899H         LINE#         41
+  C:08A0H         LINE#         42
+  C:08A2H         LINE#         43
+  C:08A4H         LINE#         44
+  C:08A7H         LINE#         45
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        点誣
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0042H BYTE ( 3%) *
+******************************************************************************
+
+Program Size: data=25.0 xdata=0 code=210
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
